@@ -22,6 +22,16 @@ angular.module('starter.service', [])
             name: "Name",
             icon: "icon"
           },
+          {
+            id: "5",
+            name: "Name",
+            icon: "icon"
+          },
+          {
+            id: "6",
+            name: "Name",
+            icon: "icon"
+          },
 
 
         ]
