@@ -1,3 +1,7 @@
 body .center {
   margin: 0 auto;
   display: block; }
+
+body #categoryLogo {
+  width: 100%;
+  padding: 10px; }
