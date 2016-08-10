@@ -1,21 +1,23 @@
-<ion-view view-title="{{title}}">
+<ion-view view-title="{{title}}" id="category-list">
   <ion-content>
-
     <div>
       <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
+      <div class="card feed" ng-repeat="item in articlelist"
+           ui-sref="app.feedView({'feedId':item.ContentID})"
+      >
+        <h2>{{item.Title}}</h2>
+        <div
+             ng-style="{'background-image':'url({{item.PortraitAvatar || item.LandscapeAvatar}})'}"
+             class="thumbnail-image"
+        >
 
-      <div class="card" ng-repeat="item in articlelist">
-  {{item.Title}}
-        <img ng-src="{{item.PortraitAvatar || item.LandscapeAvatar}}">
-        {{item.PortraitAvatar}}
-
+        </div>
+        <!--<img ng-src="{{item.PortraitAvatar || item.LandscapeAvatar}}" >-->
       </div>
-
     </div>
     <ion-infinite-scroll
       on-infinite="loadMore()"
       distance="1%">
     </ion-infinite-scroll>
-
   </ion-content>
 </ion-view>

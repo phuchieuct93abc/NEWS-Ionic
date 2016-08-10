@@ -16,6 +16,9 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.service','ang
     }
   });
 })
+  .factory('Cache', function($cacheFactory) {
+    return $cacheFactory('cache');
+  })
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -78,6 +81,15 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.service','ang
         'menuContent': {
           templateUrl: 'templates/categoryList.html',
           controller: 'CategoryLisrCtrl'
+        }
+      }
+    })
+    .state('app.feedView', {
+      url: '/feed/:feedId/',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/FeedView.html',
+          controller: 'FeedViewCtrl'
         }
       }
     })
