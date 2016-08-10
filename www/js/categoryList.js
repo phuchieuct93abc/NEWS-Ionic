@@ -8,7 +8,7 @@ angular.module('starter.controllers')
 
     var  ZONE_LIST_TYPE = "zone";
     var SPECIAL_LIST_TYPE
-      
+
     var url = LINK_CATEGORY.replace("{START_PAGE}",0).replace("{LIST_TYPE}",ZONE_LIST_TYPE).replace("{LIST_ID}",53)
     $http.get(url).success(function(data){
       console.log(data.articlelist)
