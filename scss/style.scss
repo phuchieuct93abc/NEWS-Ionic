@@ -1,3 +1,4 @@
+$white-background-color:#efefef;
 body{
   .center{
 
@@ -9,6 +10,8 @@ body{
     padding:10px;
   }
   #category-list{
+    background-color: $white-background-color;
+
     .feed{
       &.card{
         padding: 10px;
@@ -21,9 +24,13 @@ body{
 
   }
   #feed-view{
+    background-color: $white-background-color;
+
+    font-size: 20px;
     img{
       width: 100%;
     }
 
   }
+
 }

@@ -8,7 +8,7 @@ angular.module('starter.controllers')
 
     $scope.selectedFeed = $filter("where")(feedList,{ContentID:$scope.feedId})[0];
 
-    $http.get(LINK_FEED_CONTENT.replace("{ID}", $scope.feedId)).success(function(data){
+    $http.get(LINK_FEED_CONTENT.replace("{ID}", $scope.feedId),{cache:true}).success(function(data){
       console.log(data);
       $scope.selectedFeed.Body = data.article.Body
 

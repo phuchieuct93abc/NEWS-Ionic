@@ -6,13 +6,17 @@ body #categoryLogo {
   width: 100%;
   padding: 10px; }
 
-body #category-list .feed.card {
-  padding: 10px; }
+body #category-list {
+  background-color: #efefef; }
+  body #category-list .feed.card {
+    padding: 10px; }
+  body #category-list .thumbnail-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover; }
 
-body #category-list .thumbnail-image {
-  width: 100%;
-  height: 200px;
-  background-size: cover; }
-
-body #feed-view img {
-  width: 100%; }
+body #feed-view {
+  background-color: #efefef;
+  font-size: 20px; }
+  body #feed-view img {
+    width: 100%; }
