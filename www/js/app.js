@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter','tabSlideBox'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -85,11 +85,11 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.service','ang
       }
     })
     .state('app.feedView', {
-      url: '/feed/:feedId/',
+      url: '/feed/:feedIndex/',
       views: {
         'menuContent': {
-          templateUrl: 'templates/FeedView.html',
-          controller: 'FeedViewCtrl'
+          templateUrl: 'templates/viewPager.html',
+          controller: 'ViewPagerCtrl'
         }
       }
     })

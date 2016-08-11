@@ -20,3 +20,5 @@ body #feed-view {
   font-size: 20px; }
   body #feed-view img {
     width: 100%; }
+  body #feed-view p.body-text {
+    text-indent: 30px; }

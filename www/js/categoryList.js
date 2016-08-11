@@ -13,9 +13,9 @@ angular.module('starter.controllers')
     $scope.loadMore = function(){
       var getUrl  = url.replace("{START_PAGE}",$scope.articlelist.length+duplicatedNumber);
       $http.get(getUrl).success(function(data){
-        var newData = data.articlelist;
+                    var newData = data.articlelist;
 
-        $scope.articlelist = $scope.articlelist.concat(removeDupicateData(data.articlelist));
+        $scope.articlelist = $scope.articlelist.concat(removeDupicateData(newData));
         Cache.put("feeds",$scope.articlelist);
         $scope.$broadcast('scroll.infiniteScrollComplete');
 
