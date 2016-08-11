@@ -1,48 +1,61 @@
 angular.module('starter.controllers')
-        .controller('ViewPagerCtrl', function ($scope, $stateParams, Cache, $filter, $timeout,$http,$ionicSlideBoxDelegate) {
-            var LINK_CATEGORY = "http://dataprovider.touch.baomoi.com/json/articlelist.aspx?start={START_PAGE}&count=10&listType={LIST_TYPE}&listId={LIST_ID}&imageMinSize=300&mode=quickview";
-            duplicatedNumber = 0;
-            var ZONE_LIST_TYPE = "zone";
-            var url = LINK_CATEGORY.replace("{LIST_TYPE}", ZONE_LIST_TYPE).replace("{LIST_ID}", 53)
-            $scope.articlelist = Cache.get("feeds");
+        .controller('ViewPagerCtrl', function ($scope, $stateParams, CategoryService, $filter, $timeout,$http,$ionicSlideBoxDelegate) {
+            $scope.articlelist = CategoryService.getArticleList();
             $scope.indexOfSelectedFeed = parseInt($stateParams.feedIndex);
+        $scope.model={
+          activeIndex:parseInt($stateParams.feedIndex)
+        }
 
 
-            $timeout(function(){
-                $ionicSlideBoxDelegate.update();
-            },2000)
 
-            $scope.$on("tab-changed-position", function (event, $index) {
-                if ($index >= $scope.articlelist.length - 2) {
-                    $scope.loadMore()
-                }
+          $scope.loadMore = function(){
+            CategoryService.loadMore(function(data){
+              $scope.articlelist =$scope.articlelist.concat(data)
 
-            });
-
-            $scope.loadMore = function () {
-                var getUrl = url.replace("{START_PAGE}", $scope.articlelist.length + duplicatedNumber);
-                $http.get(getUrl).success(function (data) {
-                    var newData = data.articlelist;
-
-                    $scope.articlelist = $scope.articlelist.concat(removeDupicateData(newData));
-                    Cache.put("feeds", $scope.articlelist);
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
+            })
 
 
-                })
+
+          };
+
+
+
+
+          $scope.options = {
+            loop: false,
+            speed: 500,
+          }
+
+          $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+            // data.slider is the instance of Swiper
+            $scope.slider = data.slider;
+            $scope.slider.slideTo($scope.indexOfSelectedFeed);
+          });
+
+          $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+            var activeIndex = data.slider.activeIndex
+            var previousIndex = data.slider.previousIndex;
+            console.log(previousIndex,activeIndex)
+
+            if(activeIndex==previousIndex+1){
+              $scope.model.activeIndex++;
+
+            }else if(activeIndex==previousIndex-1){
+              $scope.model.activeIndex--;
+
+
             }
-            function removeDupicateData(newData) {
-                var idList = $filter('map')($scope.articlelist, "ContentID");
-                var omitedNewValue = $filter('omit')(newData, function (value) {
-                    return idList.indexOf(value.ContentID) >= 0
-
-                })
-                duplicatedNumber += newData.length - omitedNewValue.length;
-                console.log(omitedNewValue)
-                return omitedNewValue;
 
 
+
+            $scope.$evalAsync()
+            $scope.previousIndex = data.previousIndex;
+            if ($scope.model.activeIndex  >= $scope.articlelist.length - 2) {
+              $scope.loadMore();
             }
+          });
+
+
 
 
 

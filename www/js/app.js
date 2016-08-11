@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter','tabSlideBox'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

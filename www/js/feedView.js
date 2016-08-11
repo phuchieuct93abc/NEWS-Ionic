@@ -14,6 +14,7 @@ angular.module('starter.controllers')
                     var feedId = $scope.selectedFeed.ContentID;
                     $http.get(LINK_FEED_CONTENT.replace("{ID}", feedId), {cache: true}).success(function (data) {
                         $scope.selectedFeed.Body = data.article.Body
+                      console.log($scope.selectedFeed)
 
 
                     })

@@ -1,13 +1,13 @@
-<ion-view view-title="{{title}}" id="category-list">
+<ion-view view-title="{{::title}}" id="category-list">
   <ion-content>
     <div>
       <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
       <div class="card feed" ng-repeat="item in articlelist"
            ui-sref="app.feedView({'feedIndex':$index})"
       >
-        <h2>{{item.Title}}</h2>
+        <h2>{{::item.Title}}</h2>
         <div
-             ng-style="{'background-image':'url({{item.PortraitAvatar || item.LandscapeAvatar}})'}"
+             ng-style="{'background-image':'url({{::item.PortraitAvatar || item.LandscapeAvatar}})'}"
              class="thumbnail-image"
         >
 
