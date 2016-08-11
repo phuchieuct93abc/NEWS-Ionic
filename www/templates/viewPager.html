@@ -1,0 +1,31 @@
+<ion-view view-title="Category">
+  <ion-content scroll="false">
+    <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
+
+
+
+    <div class="card" >
+      <!--<div class="col" ng-repeat="item in category" >-->
+        <!--<div class="clearfix" ng-if="$index % 2 == 0"></div>-->
+        <!--<button class="button button-outline button-positive"-->
+                <!--ui-sref="app.categoryList({'categoryId':item.id,'categoryTitle':item.name})">-->
+         <!--{{item.name}}-->
+
+               <!--</button>-->
+
+
+      <!--</div>-->
+      <div ng-repeat="category in categories" class="row">
+        <div class="col" ng-repeat="button in category">
+          <button class="padding button button-outline button-block button-positive "
+                  ui-sref="app.categoryList({'categoryId':button.id,'categoryTitle':button.name})">
+                  {{button.name}}{{button.id}}
+                  </button>
+
+        </div>
+    </div>
+
+
+    </div>
+  </ion-content>
+</ion-view>
