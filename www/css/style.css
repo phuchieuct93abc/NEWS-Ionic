@@ -17,6 +17,7 @@ body #category-list {
 
 body #feed-view {
   background-color: #efefef;
+  padding-bottom: 10px;
   font-size: 23px; }
   body #feed-view img {
     width: 100%; }

@@ -46,6 +46,9 @@ angular.module('starter.service', [])
 
 
       },
+      clean:function(){
+          categoryList = [];
+      },
       setListTypeAndZone:function(){
         url = LINK_CATEGORY.replace("{LIST_TYPE}", ZONE_LIST_TYPE).replace("{LIST_ID}", 53);
 

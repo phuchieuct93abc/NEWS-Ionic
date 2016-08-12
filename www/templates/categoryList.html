@@ -1,23 +1,26 @@
 <ion-view view-title="{{::title}}" id="category-list">
-  <ion-content>
-    <div>
-      <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
-      <div class="card feed" ng-repeat="item in articlelist"
-           ui-sref="app.feedView({'feedIndex':$index})"
-      >
-        <h2>{{::item.Title}}</h2>
-        <div
-             ng-style="{'background-image':'url({{::item.PortraitAvatar || item.LandscapeAvatar}})'}"
-             class="thumbnail-image"
-        >
+    <ion-content>
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <div>
+            <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
+            <div class="card feed" ng-repeat="item in articlelist"
+                 ui-sref="app.feedView({'feedIndex':$index})"
+                 >
+                <h2>{{::item.Title}}</h2>
+                <div
+                    ng-style="{'background-image':'url({{::item.PortraitAvatar|| item.LandscapeAvatar}})'}"
+                    class="thumbnail-image"
+                    >
 
+                </div>
+            </div>
         </div>
-        <!--<img ng-src="{{item.PortraitAvatar || item.LandscapeAvatar}}" >-->
-      </div>
-    </div>
-    <ion-infinite-scroll
-      on-infinite="loadMore()"
-      distance="1%">
-    </ion-infinite-scroll>
-  </ion-content>
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
 </ion-view>

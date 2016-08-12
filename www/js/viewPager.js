@@ -24,6 +24,7 @@ angular.module('starter.controllers')
           $scope.options = {
             loop: false,
             speed: 500,
+            pagination:""
           }
 
           $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
