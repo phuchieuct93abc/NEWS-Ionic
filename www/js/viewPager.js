@@ -29,7 +29,7 @@ angular.module('starter.controllers')
           $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
             // data.slider is the instance of Swiper
             $scope.slider = data.slider;
-            $scope.slider.slideTo($scope.indexOfSelectedFeed);
+            $scope.slider.slideTo($scope.indexOfSelectedFeed,0);
           });
 
           $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
