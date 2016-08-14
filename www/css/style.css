@@ -15,16 +15,16 @@ body #category-list {
     flex-direction: column; }
   body #category-list .thumbnail-image {
     width: 100%;
-    /* height: 200px; */
     flex-shrink: inherit;
     flex: 1;
     background-size: cover; }
 
 body #feed-view {
   background-color: #efefef;
-  padding-bottom: 10px;
-  font-size: 23px; }
+  font-size: 20px; }
   body #feed-view img {
     width: 100%; }
   body #feed-view p.body-text {
     text-indent: 30px; }
+  body #feed-view .scroll {
+    padding-bottom: 50px; }

@@ -1,7 +1,8 @@
 
     <ion-content class="padding" id="feed-view">
         <h1>{{::selectedFeed.Title}}</h1>
+      <p><a>{{::selectedFeed.SourceName}} - {{::selectedFeed.ListName}} </a></p>
         <p ng-bind-html="::selectedFeed.Body"></p>
-        <a  ng-click="openSource()">Original soruce</a>
+        <a  ng-click="openSource()">Original source</a>
     </ion-content>
 

@@ -23,7 +23,6 @@ body{
     }
     .thumbnail-image{
       width: 100%;
-      /* height: 200px; */
       flex-shrink: inherit;
       flex: 1;
       background-size: cover;
@@ -33,13 +32,17 @@ body{
   }
   #feed-view{
     background-color: $white-background-color;
-    padding-bottom: 10px;
-    font-size: 23px;
+    font-size: 20px;
+
     img{
       width: 100%;
     }
     p.body-text{
         text-indent: 30px;
+    }
+    .scroll{
+      padding-bottom: 50px;
+
     }
 
   }
