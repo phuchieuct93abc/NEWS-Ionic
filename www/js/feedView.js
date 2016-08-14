@@ -13,8 +13,14 @@ angular.module('starter.controllers')
                         $scope.selectedFeed.Body = data.article.Body
                     })
                     $scope.openSource=function(){
+                      try{
+                        console.log($scope.selectedFeed.ContentUrl)
                         window.open($scope.selectedFeed.ContentUrl, '_self', 'location=yes')
-                        
+
+                      }catch(e){
+                        console.log(e)
+                      }
+
                     }
 
 

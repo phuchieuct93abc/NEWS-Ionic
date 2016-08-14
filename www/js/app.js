@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter',"ngCordova"])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -14,6 +14,36 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.service','ang
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+      var db = null;
+
+      document.addEventListener('deviceready', function() {
+        console.log("run")
+        db = window.sqlitePlugin.openDatabase({name: 'demo.db', location: 'default'});
+        // db.transaction(function(tx) {
+        //   tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
+        //   tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
+        //   tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
+        // }, function(error) {
+        //   console.log('Transaction ERROR: ' + error.message);
+        // }, function() {
+        //   alert('Populated database OK');
+        // });
+
+
+        db.transaction(function(tx) {
+          tx.executeSql('SELECT count(*)  FROM DemoTable', [], function(tx, rs) {
+           console.log('Record count (expected to be 2): ' , rs.rows.item(0));
+
+          }, function(tx, error) {
+            console.log('SELECT error: ' + error.message);
+          });
+        });
+      });
+
+
+
+
   });
 })
   .factory('Cache', function($cacheFactory) {
