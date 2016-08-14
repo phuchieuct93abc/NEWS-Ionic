@@ -9,10 +9,15 @@ body #categoryLogo {
 body #category-list {
   background-color: #efefef; }
   body #category-list .feed.card {
-    padding: 10px; }
+    padding: 10px;
+    display: flex;
+    height: 400px;
+    flex-direction: column; }
   body #category-list .thumbnail-image {
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
+    flex-shrink: inherit;
+    flex: 1;
     background-size: cover; }
 
 body #feed-view {

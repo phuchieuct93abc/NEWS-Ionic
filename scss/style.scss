@@ -1,4 +1,5 @@
 $white-background-color:#efefef;
+$card-height:400px;
 body{
   .center{
 
@@ -15,12 +16,19 @@ body{
     .feed{
       &.card{
         padding: 10px;
+        display: flex;
+        height: $card-height;
+        flex-direction: column;
       }
     }
     .thumbnail-image{
       width: 100%;
-      height: 200px;
-      background-size: cover;    }
+      /* height: 200px; */
+      flex-shrink: inherit;
+      flex: 1;
+      background-size: cover;
+
+    }
 
   }
   #feed-view{
@@ -31,7 +39,7 @@ body{
       width: 100%;
     }
     p.body-text{
-        text-indent: 30px; 
+        text-indent: 30px;
     }
 
   }

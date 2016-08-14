@@ -1,11 +1,17 @@
 <ion-view view-title="{{::title}}" id="category-list">
-    <ion-content>
-        <ion-refresher
+    <ion-content delegate-handle="categoryList">
+
+      <ion-refresher
             pulling-text="Pull to refresh..."
             on-refresh="doRefresh()">
         </ion-refresher>
         <div>
-            <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
+          <div
+            ng-style="{'background-image':'/img/logo.png'}"
+            class="thumbnail-image"
+          >
+
+          </div>
             <div class="card feed" ng-repeat="item in articlelist"
                  ui-sref="app.feedView({'feedIndex':$index})"
                  >
