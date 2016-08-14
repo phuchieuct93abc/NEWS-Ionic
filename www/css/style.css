@@ -1,3 +1,6 @@
+body .row {
+  width: calc(100% + 30px); }
+
 body .center {
   margin: 0 auto;
   display: block; }

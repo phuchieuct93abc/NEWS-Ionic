@@ -1,6 +1,10 @@
 $white-background-color:#efefef;
 $card-height:400px;
 body{
+  //Override bootstrap
+  .row{
+    width: calc(100% + 30px);
+  }
   .center{
 
     margin: 0 auto;
