@@ -17,7 +17,10 @@ angular.module('starter.controllers')
 
 
     $scope.loadMore = function () {
-      CategoryService.loadMore(function (data) {
+      console.log("load more")
+
+      CategoryService.loadMore().then(function (data) {
+        console.log("load more")
         $scope.articlelist = $scope.articlelist.concat(data)
 
       })

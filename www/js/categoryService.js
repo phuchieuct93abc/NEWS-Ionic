@@ -1,5 +1,5 @@
 angular.module('starter.service', [])
-  .service('CategoryService', function ($http,$filter) {
+  .service('CategoryService', function ($http,$filter,$q) {
     var categoryList = [];
     var LINK_CATEGORY = "http://dataprovider.touch.baomoi.com/json/articlelist.aspx?start={START_PAGE}&count=10&listType={LIST_TYPE}&listId={LIST_ID}&imageMinSize=300&mode=quickview";
     var duplicatedNumber = 0;
@@ -57,17 +57,25 @@ angular.module('starter.service', [])
         return categoryList;
       },
 
-      loadMore: function (callback) {
+      loadMore: function () {
+
+        var deferred = $q.defer();
+
+
+
+
         var service=this;
         var getUrl = url.replace("{START_PAGE}", categoryList.length + duplicatedNumber);
         $http.get(getUrl).success(function (data) {
           var newData = data.articlelist;
           newData = (service.removeDupicateData(newData))
           categoryList = categoryList.concat(newData);
-          callback(newData);
+          deferred.resolve(newData);
 
 
         })
+        return deferred.promise;
+
       },
       removeDupicateData: function (newData) {
         var idList = $filter('map')(categoryList, "ContentID");

@@ -10,28 +10,34 @@ angular.module('starter.controllers')
     }
     $scope.title = $stateParams.categoryTitle;
     $scope.categoryId = $stateParams.categoryId;
-    $scope.articlelist=[];
+    $scope.articlelist = [];
     CategoryService.clean();
 
-    $scope.loadMore = function () {
-        $timeout(function(){
-          CategoryService.loadMore(function (data) {
-            $scope.articlelist = $scope.articlelist.concat(data)
+    $scope.loadMore = function (timeout) {
+
+      $timeout(function(){
+        CategoryService.loadMore().then(function (data) {
+          $timeout(function(){
             $scope.$broadcast('scroll.infiniteScrollComplete');
             $scope.$broadcast('scroll.refreshComplete');
 
-
           })
-        },500)
+
+          $scope.articlelist = $scope.articlelist.concat(data)
 
 
+
+
+        })
+
+
+      },500)
 
 
 
     };
     $scope.doRefresh = function () {
       CategoryService.clean();
-      console.log("refresh")
       $scope.articlelist = []
       $timeout($scope.loadMore, 500);
 
@@ -40,14 +46,13 @@ angular.module('starter.controllers')
 
     $scope.$on("$ionicView.beforeEnter", function (event, data) {
       // handle event
-
+      $scope.articlelist = CategoryService.getArticleList();
       var position = cache.get("selected-feed");
       if (position != undefined) {
         $scope.scrollTo(cache.get("selected-feed"))
 
       }
     });
-
 
 
   })

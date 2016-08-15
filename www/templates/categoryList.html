@@ -15,7 +15,7 @@
             <div class="card feed" ng-repeat="item in articlelist"
                  ui-sref="app.feedView({'feedIndex':$index})"
                  >
-                <h2>{{::item.Title}}</h2>
+                <h2 class="title">{{::item.Title}}</h2>
                 <div
                     ng-style="{'background-image':'url({{::item.PortraitAvatar|| item.LandscapeAvatar}})'}"
                     class="thumbnail-image"
@@ -26,7 +26,7 @@
         </div>
         <ion-infinite-scroll
             on-infinite="loadMore()"
-            distance="1%">
+            distance="0%">
         </ion-infinite-scroll>
     </ion-content>
 </ion-view>
