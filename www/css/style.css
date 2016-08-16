@@ -28,7 +28,7 @@ body #category-list {
     flex-shrink: inherit;
     flex: 1;
     background-size: contain;
-    background-repeat: no-repeat; }
+    background-size: 100% auto; }
 
 body #feed-view {
   background-color: #efefef;

@@ -5,7 +5,7 @@ angular.module('starter.controllers')
     $scope.scrollTo = function (position) {
 
       var delegate = $ionicScrollDelegate.$getByHandle('categoryList');
-      delegate.scrollTo(0, (420 * position) + headerHeight, false);
+      delegate.scrollTo(0, (320 * position) + headerHeight, false);
 
     }
     $scope.title = $stateParams.categoryTitle;
