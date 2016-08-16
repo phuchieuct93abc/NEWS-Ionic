@@ -22,8 +22,7 @@ angular.module('starter.controllers')
                             console.log('run')
                             $scope.$broadcast('scroll.infiniteScrollComplete');
                             $scope.$broadcast('scroll.refreshComplete');
-                            ionicMaterialInk.displayEffect();
-                                            ionicMaterialMotion.fadeSlideInRight();
+
 
 
 
@@ -52,13 +51,19 @@ angular.module('starter.controllers')
 
             $scope.$on("$ionicView.beforeEnter", function (event, data) {
                 // handle event
+
+
                 $scope.articlelist = CategoryService.getArticleList();
                 var position = cache.get("selected-feed");
                 if (position != undefined) {
-                    $scope.scrollTo(cache.get("selected-feed"))
+                  $scope.scrollTo(cache.get("selected-feed"))
 
                 }
+
+
+
             });
+
 
 
         })
