@@ -1,28 +1,31 @@
 <ion-view view-title="{{::title}}" id="category-list">
     <ion-content delegate-handle="categoryList">
 
-      <ion-refresher
+        <ion-refresher
             pulling-text="Pull to refresh..."
             on-refresh="doRefresh()">
         </ion-refresher>
-        <div>
-          <div
-            ng-style="{'background-image':'/img/logo.png'}"
-            class="thumbnail-image"
-          >
+        <div >
+            <div
+                ng-style="{'background-image':'/img/logo.png'}"
+                class="thumbnail-image"
+                >
 
-          </div>
-            <div class="card feed" ng-repeat="item in articlelist"
-                 ui-sref="app.feedView({'feedIndex':$index})"
-                 >
-                <h2 class="title">{{::item.Title}}</h2>
-                <div
-                    ng-style="{'background-image':'url({{::item.PortraitAvatar|| item.LandscapeAvatar}})'}"
-                    class="thumbnail-image"
-                    >
-
-                </div>
             </div>
+            <div class="list ">
+                <a class="card feed item" ng-repeat="item in articlelist"
+                   ui-sref="app.feedView({'feedIndex':$index})">
+                    <h1 class="title">{{::item.Title}}</h1>
+                    <div
+                        ng-style="{'background-image':'url({{::item.PortraitAvatar|| item.LandscapeAvatar}})'}"
+                        class="thumbnail-image"
+                        >
+
+                    </div>
+                </a>
+
+            </div>
+
         </div>
         <ion-infinite-scroll
             on-infinite="loadMore()"

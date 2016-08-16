@@ -9,20 +9,24 @@ body #categoryLogo {
   width: 100%;
   padding: 10px; }
 
+body #category button.category-button {
+  padding: 0 !important; }
+
 body #category-list {
   background-color: #efefef; }
   body #category-list .feed.card {
     padding: 10px;
     display: flex;
     height: 300px;
-    flex-direction: column; }
+    flex-direction: column;
+    width: calc(100% - 20px); }
     body #category-list .feed.card .title {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
-      /* number of lines to show */ }
+      white-space: pre-line; }
   body #category-list .thumbnail-image {
     width: 100%;
     flex-shrink: inherit;
