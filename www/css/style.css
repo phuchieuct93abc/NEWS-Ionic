@@ -20,6 +20,8 @@ body #category-list {
     height: 300px;
     flex-direction: column;
     width: calc(100% - 20px); }
+    body #category-list .feed.card.read {
+      opacity: 0.5; }
     body #category-list .feed.card .title {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -37,6 +39,10 @@ body #category-list {
 body #feed-view {
   background-color: #efefef;
   font-size: 20px; }
+  body #feed-view .body-image {
+    width: calc(100% + 32px);
+    position: relative;
+    left: -16px; }
   body #feed-view img {
     width: 100%; }
   body #feed-view p.body-text {

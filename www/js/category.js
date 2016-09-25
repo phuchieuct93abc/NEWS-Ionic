@@ -6,10 +6,12 @@ angular.module('starter.controllers')
                 $scope.categories.push(category.splice(0, 2));
 
             }
-            $timeout(function(){
-                            ionicMaterialMotion.fadeSlideInRight();
 
                 
+            $timeout(function(){
+                         
+                                   ionicMaterialMotion.fadeSlideInRight();
+
             })
 
 

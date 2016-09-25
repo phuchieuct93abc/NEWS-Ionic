@@ -1,23 +1,15 @@
 <ion-view view-title="Category">
     <ion-content scroll="false" id="category">
         <img id="categoryLogo" src="./img/logo.png" class="center" align="middle">
-
-
-
-
         <div class="container-fluid list animate-fade-slide-in-right">
             <div ng-repeat="category in categories" class="row item">
-                <div class="col" ng-repeat="button in category">
+                <div class="col" ng-repeat="button in category track by $index">
                     <button class="padding button button-outline button-block button-positive category-button"
                             ui-sref="app.categoryList({'categoryId':button.id,'categoryTitle':button.name})">
-                        {{button.name}}
+                        {{::button.name}}
                     </button>
-
                 </div>
             </div>
         </div>
-
-
-
     </ion-content>
 </ion-view>

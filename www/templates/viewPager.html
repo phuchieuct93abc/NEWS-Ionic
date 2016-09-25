@@ -1,8 +1,8 @@
 <ion-view view-title="Feed">
     <ion-content scroll="false" >
         <ion-slides  options="options" slider="data.slider">
-            <ion-slide-page ng-repeat="feed in articlelist" >
-                <feed-view selected-feed ="::feed" ng-if="$index > (model.activeIndex - 2) && $index < (model.activeIndex + 2)" ></feed-view>
+            <ion-slide-page ng-repeat="feed in articlelist track by $index" >
+                <feed-view selected-feed ="::feed"  ng-if="$index > (model.activeIndex - 2) && $index < (model.activeIndex + 2)" ></feed-view>
             </ion-slide-page>
 
         </ion-slides>

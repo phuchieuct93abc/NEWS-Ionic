@@ -1,6 +1,9 @@
 angular.module('starter.controllers')
-        .controller('CategoryLisrCtrl', function (CategoryService, $scope, $stateParams, $timeout, cache, $ionicScrollDelegate, ionicMaterialInk,ionicMaterialMotion) {
+        .controller('CategoryLisrCtrl', function ($localStorage,CategoryService, $scope, $stateParams, $timeout, cache, $ionicScrollDelegate, ionicMaterialInk,ionicMaterialMotion) {
             var headerHeight = 0;
+    $scope.model = {}
+    $scope.model.unReadList = $localStorage.unread;
+    console.log($scope.model.unReadList)
 
             $scope.scrollTo = function (position) {
 

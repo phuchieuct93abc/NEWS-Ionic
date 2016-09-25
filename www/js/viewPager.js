@@ -1,58 +1,59 @@
-angular.module('starter.controllers')
-  .controller('ViewPagerCtrl', function ($scope, $stateParams, CategoryService, cache) {
+angular.module('starter.controllers').controller('ViewPagerCtrl', function ($scope, $stateParams, CategoryService, cache, $localStorage) {
     $scope.articlelist = CategoryService.getArticleList();
     $scope.indexOfSelectedFeed = parseInt($stateParams.feedIndex);
+    $localStorage.$default({
+        unread: {}
+    });
 
-
-
-    cache.put("selected-feed",$scope.indexOfSelectedFeed);
-    $scope.$on("$ionicView.enter", function(event, data){
-      console.log("put",$scope.indexOfSelectedFeed)
-      cache.put("selected-feed",$scope.indexOfSelectedFeed)
+    cache.put("selected-feed", $scope.indexOfSelectedFeed);
+    $scope.$on("$ionicView.enter", function (event, data) {
+        console.log(data)
+        cache.put("selected-feed", $scope.indexOfSelectedFeed)
 
     });
     $scope.model = {
-      activeIndex: parseInt($stateParams.feedIndex)
+        activeIndex: parseInt($stateParams.feedIndex)
     }
 
 
     $scope.loadMore = function () {
-      console.log("load more")
 
-      CategoryService.loadMore().then(function (data) {
-        console.log("load more")
-        $scope.articlelist = $scope.articlelist.concat(data)
+        CategoryService.loadMore().then(function (data) {
+            $scope.articlelist = $scope.articlelist.concat(data)
 
-      })
+        })
 
 
     };
 
 
     $scope.options = {
-      loop: false,
-      speed: 500,
-      pagination: ""
+        loop: false,
+        speed: 500,
+        pagination: ""
     }
 
     $scope.$on("$ionicSlides.sliderInitialized", function (event, data) {
-      // data.slider is the instance of Swiper
-      $scope.slider = data.slider;
-      $scope.slider.slideTo($scope.indexOfSelectedFeed, 0);
+        // data.slider is the instance of Swiper
+        $scope.slider = data.slider;
+        $scope.slider.slideTo($scope.indexOfSelectedFeed, 0);
     });
 
     $scope.$on("$ionicSlides.slideChangeStart", function (event, data) {
-      $scope.model.activeIndex = data.slider.activeIndex;
-      cache.put("selected-feed",$scope.model.activeIndex);
+        $scope.model.activeIndex = data.slider.activeIndex;
+        //Set read with feed at activeIndex
+        $localStorage.unread[$scope.articlelist[$scope.model.activeIndex].ContentID] = true
 
-      $scope.$evalAsync();
+        cache.put("selected-feed", $scope.model.activeIndex);
 
-      if ($scope.model.activeIndex >= $scope.articlelist.length - 2) {
-        $scope.loadMore();
-      }
+        $scope.$evalAsync();
+
+        if ($scope.model.activeIndex >= $scope.articlelist.length - 2){
+            $scope.loadMore();
+        }
     });
 
 
 
 
-  })
+})

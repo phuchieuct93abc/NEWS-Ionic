@@ -13,11 +13,14 @@
 
             </div>
             <div class="list">
-                <a class="card feed" ng-repeat="item in articlelist"
-                   ui-sref="app.feedView({'feedIndex':$index})">
+                <a class="card feed" ng-repeat="item in articlelist track by $index"
+                   ui-sref="app.feedView({'feedIndex':$index})"
+                   ng-class="{'read':model.unReadList[item.ContentID]}"
+                   abc ='{{model.unReadList}} {{item.ContentID}}'
+                   >
                     <h1 class="title">{{::item.Title}}</h1>
                     <div
-                        ng-style="{'background-image':'url({{::item.PortraitAvatar|| item.LandscapeAvatar}})'}"
+                        ng-style="::{'background-image':'url({{::item.PortraitAvatar|| item.LandscapeAvatar}})'}"
                         class="thumbnail-image"
                         >
 

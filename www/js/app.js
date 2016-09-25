@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter',"ngCordova",'ionic-material'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.service','angular.filter',"ngCordova",'ionic-material','ngStorage'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
